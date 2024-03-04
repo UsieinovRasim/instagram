@@ -5,16 +5,21 @@
         Sign up
       </h2>
     </div>
+    <%#= binding.pry %>
     <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { class: "mt-8 space-y-6" }) do |f| %>
       <div class="rounded-md shadow-sm -space-y-px">
         <div>
           <%= f.label :email, class: "sr-only" %>
           <%= f.email_field :email, autofocus: true, autocomplete: "email", required: true, placeholder: "Email", class: "appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm" %>
         </div>
-        <!--        <div>-->
-        <%#= f.label :name, class: "sr-only" %>
-        <%#= f.text_field :nickname, autocomplete: "name", required: true, placeholder: "Name", class: "appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900  focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm" %>
-        <!--        </div>-->
+        <div>
+          <%= f.label :fullname, class: "sr-only" %>
+          <%= f.text_field :fullname, autocomplete: "name", required: true, placeholder: "FullName", class: "appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900  focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm" %>
+        </div>
+        <div>
+          <%= f.label :username, class: "sr-only" %>
+          <%= f.text_field :username, autocomplete: "name", required: true, placeholder: "UserName", class: "appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900  focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm" %>
+        </div>
         <div>
           <%= f.label :password, class: "sr-only" %>
           <%= f.password_field :password, autocomplete: "new-password", required: true, placeholder: "Password", class: "appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900  focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm" %>
