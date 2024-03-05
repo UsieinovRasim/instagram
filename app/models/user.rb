@@ -14,6 +14,4 @@ class User < ApplicationRecord
 
   validates :website, length: { maximum: 250 }
   validates :about_myself, length: { maximum: 150 }
-  validates :gender, inclusion: { in: GENDER_OPTIONS.values }
-
 end
