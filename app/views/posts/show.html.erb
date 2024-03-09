@@ -1,0 +1,21 @@
+<div class="flex justify-center">
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex justify-between">
+      <%= image_tag(@post.image.variant(resize_to_fill: [500, 600])) %>
+
+      <div class="ml-14">
+        <%= image_tag @post.user.avatar.variant(resize_to_fill: [50, 50]), class: "rounded-avatar" if @post.user.avatar.attached? %>
+      </div>
+
+      <div class="ml-9">
+        <%= @post.user.username %>
+        <h1 class="text-sm font-medium"><%= @post.description %></h1>
+      </div>
+    </div>
+
+    <div class="mt-4">
+      <%= link_to 'Редактировать', edit_post_path, class: "mr-4" %>
+      <%= link_to 'Назад', user_path(@post.user) %>
+    </div>
+  </div>
+</div>

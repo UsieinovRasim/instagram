@@ -1,6 +1,11 @@
 <%= form_with(model: user, local: true, class: "w-full max-w-md mx-auto") do |form| %>
 
   <div class="mb-4">
+    <%= form.label :avatar, 'Новое фото', class: "block text-gray-700 text-sm font-bold mb-2" %>
+    <%= form.file_field :avatar, class: "shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" %>
+  </div>
+
+  <div class="mb-4">
     <%= form.label :website, 'Сайт', class: "block text-gray-700 text-sm font-bold mb-2" %>
     <%= form.text_field :website, placeholder: 'Сайт', class: "shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" %>
   </div>

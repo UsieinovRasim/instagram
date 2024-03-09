@@ -1,19 +1,42 @@
 <% if user_signed_in? %>
-  <%= @user.username %> <br>
-  <%= @user.posts.count %> <br>
-  <%= @user.fullname %> <br><br>
+  <div class="flex items-center">
+    <div class="ml-14">
+      <%= image_tag @user.avatar.variant(resize_to_fill: [180, 180]), class: "rounded-avatar" if @user.avatar.attached? %>
+    </div>
 
-  <%= link_to 'Редактировать профиль', edit_user_path(@user), class: "py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" %> <br><br>
+    <div class="ml-10 flex w-full">
+      <div>
+        <div class="flex flex-col">
+          <div class="mb-2">
+            <p class="mb-2"><%= @user.username %></p>
+            <p class="mb-2"><%= @user.posts.count %> posts</p>
+            <p><%= @user.fullname %></p>
+          </div>
+        </div>
+      </div>
 
-  <%= link_to 'Создать пост', new_post_path, class: "py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" %>
-  <br><br \>
+      <div class="flex">
+        <div class="mb-4 mt-4 ml-10">
+          <%= link_to 'Редактировать профиль', edit_user_path(@user), class: "py-2 px-4 border border-transparent text-sm font-medium rounded-md text-black bg-gray-300 hover:bg-gray-400 focus:bg-gray-400 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 mr-2" %>
+        </div>
+
+        <div class="mb-4 mt-4">
+          <%= link_to 'Создать пост', new_post_path, class: "py-2 px-4 border border-transparent text-sm font-medium rounded-md text-black bg-gray-300 hover:bg-gray-400 focus:bg-gray-400 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 mr-2" %>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <div class="my-6 image-container">
-    <% @user.posts.each_slice(3) do |posts_row| %>
+    <% @posts.each_slice(3) do |posts_row| %>
       <div class="flex justify-between w-full">
         <% posts_row.each do |post| %>
-          <div class="image-wrapper">
-            <%= link_to image_tag post.image, class: "square-image" if post.image.attached? %>
+          <div class="image-wrapper mt-6">
+            <% if post.image.attached? %>
+              <%= link_to image_tag(post.image.variant(resize_to_fill: [400, 400]), class: "square-image"), post %>
+            <% else %>
+              <p><%= post.description %></p>
+            <% end %>
           </div>
         <% end %>
       </div>

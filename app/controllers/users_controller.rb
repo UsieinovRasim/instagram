@@ -1,18 +1,15 @@
 class UsersController < ApplicationController
   before_action :authenticate_user!
+  before_action :set_user, only: [:show, :edit, :update]
 
   def show
-    return if set_user_id.blank?
-
-    @user = User.find(set_user_id)
+    @posts = @user.posts.order(:id)
   end
 
   def edit
-    @user = current_user
   end
 
   def update
-    @user = current_user
     if @user.update(user_params)
       redirect_to root_path, notice: 'Профиль сохранен'
     else
@@ -22,11 +19,11 @@ class UsersController < ApplicationController
 
   private
 
-  def set_user_id
-    params[:id] || current_user&.id
+  def set_user
+    @user = params[:id] ? User.find(params[:id]) : current_user
   end
 
   def user_params
-    params.require(:user).permit(:website, :about_myself, :gender)
+    params.require(:user).permit(:avatar, :website, :about_myself, :gender)
   end
 end
