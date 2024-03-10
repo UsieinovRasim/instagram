@@ -1,12 +1,12 @@
 <div class="max-w-md mx-auto px-4 sm:px-6 lg:px-8">
-  <div class="flex justify-between">
+  <div class="flex justify-between items-start">
     <%= image_tag(@post.image.variant(resize_to_fill: [500, 600])) %>
 
     <%= form_with(model: @post, local: true, class: "w-full max-w-md mx-auto ml-10") do |form| %>
 
-      <div class="mb-4">
-        <%= form.label :description, 'Новый пост', class: "block text-gray-700 text-sm font-bold mb-2" %>
-        <%= form.text_area :description, class: "shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" %>
+      <div class="mb-4 w-full mr-8">
+        <%= form.label :description, 'Редактирование информации', class: "block text-gray-700 text-sm font-bold mb-2" %>
+        <%= form.text_area :description, rows: 8, class: "w-full shadow appearance-none border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" %>
       </div>
 
       <div class="mb-4 flex justify-end">

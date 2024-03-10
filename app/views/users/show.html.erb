@@ -16,15 +16,60 @@
       </div>
 
       <div class="flex">
-        <div class="mb-4 mt-4 ml-10">
-          <%= link_to 'Редактировать профиль', edit_user_path(@user), class: "py-2 px-4 border border-transparent text-sm font-medium rounded-md text-black bg-gray-300 hover:bg-gray-400 focus:bg-gray-400 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 mr-2" %>
+        <% if current_user == @user %>
+          <div class="mb-4 mt-4 ml-10">
+            <%= link_to 'Редактировать профиль', edit_user_path(@user), class: "py-2 px-4 border border-transparent text-sm font-medium rounded-md text-black bg-gray-300 hover:bg-gray-400 focus:bg-gray-400 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 mr-2" %>
+          </div>
+        <% end %>
+        <% current_user.follow_requests.each do |request| %>
+          <div class="flex items-center mb-4">
+            <p><%= request.followerable.email %> wants to follow you</p>
+            <%= button_to "Accept", accept_path(request.followerable), method: :post, class: "ml-4 py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" %>
+            <%= button_to "Decline", decline_path(request.followerable), method: :delete, class: "ml-2 py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-red-600 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500" %>
+          </div>
+        <% end %>
+        <% followers_count = current_user.followers.count %>
+        <div class="mt-4 ml-10">
+          <p class="font-bold"><%= "#{pluralize(followers_count, 'подписчик')}" %></p>
+          <% if followers_count > 0 %>
+            <% current_user.followers.each do |follower| %>
+              <p><%= link_to follower.email, follower %></p>
+            <% end %>
+          <% else %>
+            <p>0 подписчиков</p>
+          <% end %>
         </div>
 
-        <div class="mb-4 mt-4">
-          <%= link_to 'Создать пост', new_post_path, class: "py-2 px-4 border border-transparent text-sm font-medium rounded-md text-black bg-gray-300 hover:bg-gray-400 focus:bg-gray-400 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 mr-2" %>
+        <% following_count = current_user.following.count %>
+        <div class="mt-4 ml-10">
+          <p class="font-bold"><%= "#{pluralize(following_count, 'подписка')}" %></p>
+          <% if following_count > 0 %>
+            <% current_user.following.each do |following| %>
+              <p><%= link_to following.email, following %></p>
+            <% end %>
+          <% else %>
+            <p>0 подписок</p>
+          <% end %>
         </div>
+
+        <% unless current_user == @user %>
+          <div class="mb-4 mt-4 ml-10">
+            <% if current_user.following?(@user) %>
+              <%= button_to "Отменить подписку", unfollow_path(@user), method: :delete, class: "py-2 px-4 border border-transparent text-sm font-medium rounded-md text-black bg-gray-300 hover:bg-gray-400 focus:bg-gray-400 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 mr-2" %>
+            <% elsif current_user.sent_follow_request_to?(@user)%>
+              <%= button_to "Cancel follow request", cancel_path(@user), method: :delete, class: "py-2 px-4 border border-transparent text-sm font-medium rounded-md text-black bg-gray-300 hover:bg-gray-400 focus:bg-gray-400 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 mr-2" %>
+            <% else %>
+              <%= button_to "Подписаться", follow_path(@user), method: :post, class: "py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-blue-500 hover:bg-blue-600 focus:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 mr-2" %>
+            <% end %>
+          </div>
+        <% end %>
       </div>
     </div>
+  </div>
+  <div class="mb-4 mt-4 ml-10">
+    <% if current_user == @user %>
+      <%= link_to 'Создать пост', new_post_path, class: "py-2 px-4 border border-transparent text-sm font-medium rounded-md text-black bg-gray-300 hover:bg-gray-400 focus:bg-gray-400 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 mr-2" %>
+    <% end %>
   </div>
 
   <div class="my-6 image-container">
