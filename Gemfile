@@ -18,6 +18,7 @@ gem "bootsnap", require: false
 gem "image_processing", "~> 1.2"
 gem 'activestorage', '~> 7.0.8.1'
 gem 'followability', github: 'nejdetkadir/followability', branch: 'main'
+gem 'ransack', '~> 4.1', '>= 4.1.1'
 
 group :development, :test do
   gem "debug", platforms: %i[ mri mingw x64_mingw ]

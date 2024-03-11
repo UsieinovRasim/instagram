@@ -11,6 +11,9 @@ class User < ApplicationRecord
   # has_many :comments
   has_one_attached :avatar
 
+  validates :website, length: { maximum: 250 }
+  validates :about_myself, length: { maximum: 150 }
+
   GENDER_OPTIONS = {
     "Женский": "female",
     "Мужской": "male",
@@ -21,6 +24,7 @@ class User < ApplicationRecord
     followerable_relationships.where(followable_id: user.id).destroy_all
   end
 
-  validates :website, length: { maximum: 250 }
-  validates :about_myself, length: { maximum: 150 }
+  def self.ransackable_attributes(_)
+    %w[email fullname username website]
+  end
 end

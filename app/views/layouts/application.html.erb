@@ -23,6 +23,15 @@
         <h1 class="ml-2 text-2xl font-regular text-black">Instagram</h1>
       </a>
     </div>
+
+    <%= form_with url: profiles_index_path, method: :get do |form| %>
+      <div class="flex items-center justify-center mt-4">
+        <%= form.search_field :query, value: params[:query], placeholder: "Поисковой запрос", class: "border border-gray-300 px-4 py-2 rounded-md mr-2 focus:outline-none focus:ring focus:border-blue-300" %>
+        <%#= form.submit "Search", class: "bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-md focus:outline-none focus:ring focus:border-blue-300" %>
+      </div>
+    <% end %>
+
+
     <div class="hidden md:flex items-center">
       <% if current_user.present? %>
         <%= link_to "Sign out", destroy_user_session_path, data: { "turbo-method": :delete }, class: "py-2 px-4 border border-transparent text-sm font-medium rounded-md text-black bg-gray-300 hover:bg-gray-400 focus:bg-gray-400 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 mr-2" %>
