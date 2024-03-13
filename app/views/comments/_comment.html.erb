@@ -1,0 +1,22 @@
+<div id="<%= dom_id comment %>">
+  <p class="my-5">
+    <strong class="font-bold">Текст:</strong>
+    <%= comment.text %>
+  </p>
+
+  <p class="my-5">
+    <strong class="font-bold">Пользователь:</strong>
+    <%= comment.user.username %>
+  </p>
+
+<!--  <p class="my-5">-->
+<!--    <strong class="block font-medium mb-1">Post:</strong>-->
+    <%#= comment.post_id %>
+<!--  </p>-->
+
+  <% if action_name != "show" %>
+    <%= link_to "Показать", comment, class: "rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
+    <%= link_to "Редактировать", edit_comment_path(comment), class: "rounded-lg py-3 ml-2 px-5 bg-gray-100 inline-block font-medium" %>
+    <hr class="mt-6">
+  <% end %>
+</div>
