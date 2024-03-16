@@ -18,7 +18,7 @@ class CommentsController < ApplicationController
 
   def create
     @comment = Comment.new(comment_params)
-    @comment.text = @comment.text.truncate(30)
+    @comment.text = @comment.text.truncate(20)
 
     respond_to do |format|
       if @comment.save

@@ -10,6 +10,7 @@ class PostsController < ApplicationController
 
   def show
     @comment = @post.comments.build
+    @comments = @post.comments.order(created_at: :asc)
   end
 
   def edit
@@ -26,7 +27,7 @@ class PostsController < ApplicationController
   def create
     @post = Post.new(post_params)
     if @post.save
-      redirect_to user_path(current_user), notice: 'Новый пост создан'
+      redirect_to user_path(current_user)
     else
       render :new
     end

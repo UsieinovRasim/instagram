@@ -7,11 +7,11 @@ class User < ApplicationRecord
   followability
 
   has_many :posts
-  # has_many :likes
   has_many :comments
+  has_many :likes
   has_one_attached :avatar
 
-  validates :website, length: { maximum: 250 }
+  validates :website, length: { maximum: 30 }
   validates :about_myself, length: { maximum: 150 }
 
   GENDER_OPTIONS = {

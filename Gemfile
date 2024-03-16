@@ -15,6 +15,7 @@ gem "redis", "~> 4.0"
 gem "tzinfo-data", platforms: %i[ mingw mswin x64_mingw jruby ]
 gem "bootsnap", require: false
 
+gem "devise", "~> 4.9"
 gem "image_processing", "~> 1.2"
 gem 'activestorage', '~> 7.0.8.1'
 gem 'followability', github: 'nejdetkadir/followability', branch: 'main'
@@ -33,7 +34,4 @@ end
 group :test do
   gem "capybara"
   gem "selenium-webdriver"
-
 end
-
-gem "devise", "~> 4.9"
