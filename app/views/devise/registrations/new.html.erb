@@ -1,38 +1,59 @@
-<div class="min-h-full flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
-  <div class="max-w-md w-full space-y-8">
-    <div>
-      <h2 class="mt-6 text-center text-3xl font-extrabold text-gray-900">
-        Sign up
-      </h2>
-    </div>
-    <%#= binding.pry %>
-    <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { class: "mt-8 space-y-6" }) do |f| %>
-      <div class="rounded-md shadow-sm -space-y-px">
-        <div>
-          <%= f.label :email, class: "sr-only" %>
-          <%= f.email_field :email, autofocus: true, autocomplete: "email", required: true, placeholder: "Email", class: "appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm" %>
-        </div>
-        <div>
-          <%= f.label :fullname, class: "sr-only" %>
-          <%= f.text_field :fullname, autocomplete: "name", required: true, placeholder: "FullName", class: "appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900  focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm" %>
-        </div>
-        <div>
-          <%= f.label :username, class: "sr-only" %>
-          <%= f.text_field :username, autocomplete: "name", required: true, placeholder: "UserName", class: "appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900  focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm" %>
-        </div>
-        <div>
-          <%= f.label :password, class: "sr-only" %>
-          <%= f.password_field :password, autocomplete: "new-password", required: true, placeholder: "Password", class: "appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900  focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm" %>
-        </div>
-        <div>
-          <%= f.label :password_confirmation, class: "sr-only" %>
-          <%= f.password_field :password_confirmation, autocomplete: "new-password", required: true, placeholder: "Password confirmation", class: "appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm" %>
-        </div>
+<div class="mx-auto"  style="border: 1px solid #D1D5DB; padding: 1rem; border-radius: 0.375rem; max-width: 23rem;">
+  <div class="min-h-full flex items-center justify-center py-12 px-4 sm:px-3 lg:px-8 ">
+    <div class="max-w-md w-full space-y-8">
+      <div class="flex justify-center">
+        <img alt="File:Instagram logo.svg" src="//upload.wikimedia.org/wikipedia/commons/thumb/2/2a/Instagram_logo.svg/800px-Instagram_logo.svg.png" decoding="async" width="800" height="286" srcset="//upload.wikimedia.org/wikipedia/commons/thumb/2/2a/Instagram_logo.svg/1200px-Instagram_logo.svg.png 1.5x, //upload.wikimedia.org/wikipedia/commons/thumb/2/2a/Instagram_logo.svg/1600px-Instagram_logo.svg.png 2x" data-file-width="840" data-file-height="300">
       </div>
-
       <div>
-        <%= f.submit "Sign up", class: "group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 cursor-pointer" %>
+        <h3 class="mt-6 text-center text-xl text-gray-700">
+          Зарегистрируйтесь, чтобы смотреть фото и видео ваших друзей
+        </h3>
       </div>
-    <% end %>
+      <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { class: "mt-8 space-y-6" }) do |f| %>
+        <div class="rounded-md shadow-sm -space-y-px">
+          <div>
+            <%= f.label :email, class: "sr-only" %>
+            <%= f.email_field :email, autofocus: true, autocomplete: "email", required: true, placeholder: 'Эл. адрес', class: "appearance-none rounded-none relative block w-full px-3 py-2 mb-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm" %>
+          </div>
+          <div>
+            <%= f.label :fullname, class: "sr-only" %>
+            <%= f.text_field :fullname, autocomplete: "name", required: true, placeholder: 'Имя и фамилия', class: "appearance-none rounded-none relative block w-full px-3 py-2 mb-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm" %>
+          </div>
+          <div>
+            <%= f.label :username, class: "sr-only" %>
+            <%= f.text_field :username, autocomplete: "name", required: true, placeholder: 'Имя пользователя', class: "appearance-none rounded-none relative block w-full px-3 py-2 mb-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm" %>
+          </div>
+          <div>
+            <%= f.label :password, class: "sr-only" %>
+            <%= f.password_field :password, autocomplete: "new-password", required: true, placeholder: 'Пароль', class: "appearance-none rounded-none relative block w-full px-3 py-2 mb-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm" %>
+          </div>
+          <div>
+            <%= f.label :password_confirmation, class: "sr-only" %>
+            <%= f.password_field :password_confirmation, autocomplete: "new-password", required: true, placeholder: 'Подтвердить пароль', class: "appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm" %>
+          </div>
+        </div>
+
+        <div>
+          <%= f.submit 'Регистрация', class: "group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-blue-500 hover:bg-blue-400 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 cursor-pointer", style: "background-color: #81B9E3;" %>
+        </div>
+
+        <h3 class="mt-6 text-center text-2xl font-medium text-gray-700">
+          <hr class="border-gray-300 border-solid border-t-2 mx-auto w-20">
+          <span class="mx-2">или</span>
+          <hr class="border-gray-300 border-solid border-t-2 mx-auto w-20">
+        </h3>
+
+        <div class="hidden md:flex items-center">
+          <% if current_user.present? %>
+            <%= link_to 'Выйти', destroy_user_session_path, data: { "turbo-method": :delete }, class: "py-2 px-4 border border-transparent text-sm font-medium rounded-md text-black bg-gray-300 hover:bg-gray-400 focus:bg-gray-400 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 mr-2" %>
+          <% else %>
+            <div class="ml-10">
+              <span class="text-gray-700">Есть аккаунт? </span>
+              <%= link_to 'Войти', new_user_session_path, style: "color: #3B82F6;", class: "py-2 px-4 border border-transparent text-sm font-medium rounded-md" %>
+            </div>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
   </div>
 </div>

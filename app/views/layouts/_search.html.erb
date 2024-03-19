@@ -1,0 +1,5 @@
+<%= form_with(url: profiles_index_path, method: :get, class: "flex items-center justify-center mt-4 ml-2") do |form| %>
+  <%= image_tag("search_icon.svg", alt: "Search", class: "mr-2") %>
+  <%= form.search_field :query, value: params[:query], placeholder: 'Поисковой запрос', class: "py-2 px-4 border border-transparent text-sm font-medium rounded-md text-black focus:outline-none focus:ring-2 focus:ring-offset-2 flex items-center", style: "border: none;" %>
+  <%#= form.submit 'Поиск', class: "bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-md focus:outline-none focus:ring focus:border-blue-300" %>
+<% end %>

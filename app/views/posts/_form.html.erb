@@ -1,4 +1,4 @@
-<%= form_with(model: post, local: true, class: "w-full max-w-md mx-auto") do |form| %>
+<%= form_with(model: post, local: true, class: "w-full lg:max-w-md lg:mx-auto") do |form| %>
 
   <div class="mb-4">
     <%= form.label :description, 'Новый пост', class: "block text-gray-700 text-sm font-bold mb-2" %>
@@ -7,12 +7,11 @@
   <%= form.hidden_field :user_id, { value: current_user.id } %>
 
   <div class="mb-4">
-    <%= form.label :image, class: "block text-gray-700 text-sm font-bold mb-2" %>
+    <%= form.label :image, 'Добавить фото', class: "block text-gray-700 text-sm font-bold mb-2" %>
     <%= form.file_field :image, class: "shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" %>
   </div>
 
   <div class="mb-4 flex justify-end">
-    <%= form.submit 'Отправить', class: "bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" %>
+    <%= form.submit 'Опубликовать', class: "bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" %>
   </div>
-
 <% end %>

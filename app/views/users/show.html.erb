@@ -1,24 +1,22 @@
 <% if user_signed_in? %>
   <div class="flex items-center">
-    <div class="ml-14">
-      <%= image_tag @user.avatar.variant(resize_to_fill: [180, 180]), class: "rounded-avatar" if @user.avatar.attached? %>
+    <div class="ml-10">
+      <%= image_tag @user.avatar.variant(resize_to_fill: [200, 200]), class: "rounded-avatar" if @user.avatar.attached? %>
     </div>
 
     <div class="ml-10 flex w-full">
-      <div>
-        <div class="flex flex-col">
-          <div class="mb-2">
-            <p class="mb-2"><%= @user.username %></p>
-            <p class="mb-2"><%= @user.posts.count %> posts</p>
-            <p><%= @user.fullname %></p>
-          </div>
+      <div class="flex flex-col">
+        <div class="mb-2">
+          <p class="mb-2"><%= @user.username %></p>
+          <p class="mb-2"><%= @user.posts.count %> публикаций</p>
+          <p><%= @user.fullname %></p>
         </div>
       </div>
 
       <div class="flex">
         <% if current_user == @user %>
-          <div class="mb-4 mt-4 ml-10">
-            <%= link_to 'Редактировать профиль', edit_user_path(@user), class: "py-2 px-4 border border-transparent text-sm font-medium rounded-md text-black bg-gray-300 hover:bg-gray-400 focus:bg-gray-400 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 mr-2" %>
+          <div class="mt-14 ml-10">
+            <%= link_to 'Редактировать профиль', edit_user_path(@user), class: "py-2 px-4 text-sm font-medium rounded-md text-black bg-gray-300 hover:bg-gray-400 focus:bg-gray-400 focus:outline-none focus:ring-2 focus:ring-offset-2 mr-2" %>
           </div>
         <% end %>
         <%# current_user.follow_requests.each do |request| %>
@@ -29,7 +27,7 @@
 <!--          </div>-->
         <%# end %>
         <% followers_count = current_user.followers.count %>
-        <div class="mt-4 ml-10">
+        <div class="mt-14 ml-2">
           <p class="font-bold"><%= "#{pluralize(followers_count, 'подписчик')}" %></p>
           <% if followers_count > 0 %>
             <% current_user.followers.each do |follower| %>
@@ -41,7 +39,7 @@
         </div>
 
         <% following_count = current_user.following.count %>
-        <div class="mt-4 ml-10">
+        <div class="ml-2">
           <p class="font-bold"><%= "#{pluralize(following_count, 'подписка')}" %></p>
           <% if following_count > 0 %>
             <% current_user.following.each do |following| %>
@@ -66,11 +64,6 @@
       </div>
     </div>
   </div>
-  <div class="mb-4 mt-4 ml-10">
-    <% if current_user == @user %>
-      <%= link_to 'Создать пост', new_post_path, class: "py-2 px-4 border border-transparent text-sm font-medium rounded-md text-black bg-gray-300 hover:bg-gray-400 focus:bg-gray-400 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 mr-2" %>
-    <% end %>
-  </div>
 
   <div class="my-6 image-container">
     <% @posts.each_slice(3) do |posts_row| %>
@@ -78,7 +71,7 @@
         <% posts_row.each do |post| %>
           <div class="image-wrapper mt-6">
             <% if post.image.attached? %>
-              <%= link_to image_tag(post.image.variant(resize_to_fill: [400, 400]), class: "square-image"), post %>
+              <%= link_to image_tag(post.image.variant(resize_to_fill: [298, 298]), class: "square-image"), post %>
             <% else %>
               <p><%= post.description %></p>
             <% end %>

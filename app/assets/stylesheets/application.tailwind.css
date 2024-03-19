@@ -12,6 +12,7 @@
 
 */
 
-.rounded-avatar {
-    border-radius: 50%;
+.vertical-line {
+    border-left: 1px solid #ccc;
+    height: 100%;
 }
