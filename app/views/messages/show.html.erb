@@ -1,0 +1,30 @@
+<%= link_to messages_path do %>
+  <%= image_tag("back_icon.svg", class: "mr-8") %>
+<% end %>
+
+<h1>Просмотр сообщений</h1>
+
+<div class="ml-auto flex items-center mb-2">
+  <%= image_tag @message.sender.avatar.variant(resize_to_fill: [40, 40]), class: "rounded-avatar mr-2" %>
+  <div>
+    <p><strong><%= @message.sender.username %></strong></p>
+    <p><%= @message.content %></p>
+  </div>
+</div>
+
+<% @message.replies.each do |reply| %>
+  <div class="ml-auto flex items-center mb-2">
+    <% if reply.sender && reply.sender.avatar.attached? %>
+      <%= image_tag reply.sender.avatar.variant(resize_to_fill: [40, 40]), class: "rounded-avatar mr-2" %>
+    <% end %>
+    <div>
+      <p><strong><%= reply.sender&.username %></strong></p>
+      <p><%= reply.content %></p>
+    </div>
+  </div>
+<% end %>
+
+<%= form_with(model: @reply, url: message_replies_path(@message)) do |form| %>
+  <%= form.text_area :content, placeholder: "Введите ваш ответ", class: "block mb-4" %>
+  <%= form.submit "Отправить ответ", class: "bg-blue-500 text-white px-4 py-2 rounded" %>
+<% end %>

@@ -1,0 +1,20 @@
+<h1>Мои сообщения</h1>
+
+<% @messages.each do |message| %>
+  <div class="ml-auto flex items-center mb-2">
+    <%= image_tag message.sender.avatar.variant(resize_to_fill: [40, 40]), class: "rounded-avatar mr-2" %>
+    <div>
+      <p><strong><%= message.sender.username %></strong></p>
+      <p><%= link_to message.content, message_path(message) %></p>
+    </div>
+  </div>
+  <%= button_to "Удалить", message_path(message), method: :delete, data: { turbo_confirm: 'Вы уверены?' }, class: "text-red-500 hover:underline ml-10 mb-4" %>
+<% end %>
+
+<div class="mr-8">
+  <%= form_with(model: Message.new, url: messages_path) do |form| %>
+    <%= form.collection_select :receiver_id, User.all, :id, :username, prompt: "Выберите кому", class: "block mb-4" %>
+    <%= form.text_area :content, placeholder: "Введите ваше сообщение", class: "block mb-4" %>
+    <%= form.submit "Отправить сообщение", class: "bg-blue-500 text-white px-4 py-2 rounded" %>
+  <% end %>
+</div>

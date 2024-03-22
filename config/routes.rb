@@ -1,6 +1,10 @@
 Rails.application.routes.draw do
   resources :likes, only: [:create, :destroy]
 
+  resources :messages, only: [:index, :create, :destroy, :new, :show] do
+    post 'replies', to: 'messages#create_reply'
+  end
+
   get 'profiles/index'
 
   devise_for :users, controllers: { registrations: "users/registrations" }
