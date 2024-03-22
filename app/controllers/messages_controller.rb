@@ -1,5 +1,7 @@
+# frozen_string_literal: true
+
 class MessagesController < ApplicationController
-  before_action :set_message, only: [:show, :destroy]
+  before_action :set_message, only: %i[show destroy]
 
   def index
     @messages = current_user.received_messages.order(created_at: :desc)

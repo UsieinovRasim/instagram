@@ -1,0 +1,22 @@
+inherit_from: .rubocop_todo.yml
+
+require:
+  - rubocop-performance
+  - rubocop-rspec
+
+AllCops:
+  NewCops: enable
+
+Metrics/BlockLength:
+  Exclude:
+    - spec/**/*.rb
+
+Layout/LineLength:
+  Exclude:
+    - spec/**/*.rb
+
+Style/Documentation:
+  Enabled: false
+
+RSpec/MultipleExpectations:
+  Max: 10

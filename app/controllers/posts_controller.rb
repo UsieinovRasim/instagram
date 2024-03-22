@@ -1,9 +1,10 @@
+# frozen_string_literal: true
+
 class PostsController < ApplicationController
   before_action :set_post, only: %i[show edit update]
 
-  def index
+  def index; end
 
-  end
   def new
     @post = Post.new
   end
@@ -13,8 +14,7 @@ class PostsController < ApplicationController
     @comments = @post.comments.order(created_at: :asc)
   end
 
-  def edit
-  end
+  def edit; end
 
   def update
     if @post.update(post_params)

@@ -1,5 +1,7 @@
+# frozen_string_literal: true
+
 class UsersController < ApplicationController
-  before_action :set_user#, only: [:show, :edit, :update]
+  before_action :set_user # , only: [:show, :edit, :update]
   before_action :authenticate_user!
 
   def show
@@ -32,14 +34,13 @@ class UsersController < ApplicationController
     redirect_to user_path(@user)
   end
 
-  def edit
-  end
+  def edit; end
 
   def update
     if @user.update(user_params)
-      redirect_to root_path, notice: 'Профиль сохранен'
+      redirect_to root_path
     else
-      render 'edit'
+      render :edit
     end
   end
 
