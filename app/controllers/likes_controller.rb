@@ -14,6 +14,8 @@ class LikesController < ApplicationController
     redirect_to post_path(@like.post)
   end
 
+  private
+
   def like_params
     params.require(:like).permit(:post_id)
   end
