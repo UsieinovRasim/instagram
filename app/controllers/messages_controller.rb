@@ -35,8 +35,12 @@ class MessagesController < ApplicationController
   end
 
   def destroy
-    @message = current_user.received_messages.find(params[:id])
-    @message.destroy
+    @message = current_user.received_messages.find_by(id: params[:id])
+    if @message
+      @message.destroy
+    else
+      flash[:alert] = 'Message not found'
+    end
     redirect_to messages_path
   end
 
